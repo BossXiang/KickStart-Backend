@@ -5,6 +5,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { User } from './typeorm/entities/User';
 import { Profile } from './typeorm/entities/Profile';
+import { GeneralModule } from './api/v1/general/general.module';
+import { ProductModule } from './api/v1/product/product.module';
+import { OrderModule } from './api/v1/order/order.module';
+import { Product } from './typeorm/entities/Product';
+import { Order } from './typeorm/entities/Order';
 
 @Module({
   imports: [ TypeOrmModule.forRoot({
@@ -14,9 +19,9 @@ import { Profile } from './typeorm/entities/Profile';
     username: 'tom',
     password: '123456789',
     database: 'sql_test',
-    entities: [ User, Profile ],
+    entities: [ User, Profile, Product, Order ],
     synchronize: true,
-  }), UsersModule ],
+  }), UsersModule, GeneralModule, ProductModule, OrderModule ],
   controllers: [AppController],
   providers: [AppService],
 })
