@@ -11,8 +11,8 @@ export class Product {
   @Column()
   description: string;
 
-  @Column()
-  imgSource: string;   // Should be array of string
+  @Column('simple-array')
+  imgSource: string[];
 
   @Column()
   price: number;

@@ -1,9 +1,19 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Delete,
+  Post,
+  Put,
+  Param,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { ProductService } from './product.service';
+import { Product } from 'src/typeorm/entities/Product';
+import { CreateProductDto } from './dto/CreateProduct.dto';
 
 @Controller('api/v1/product')
 export class ProductController {
-
   constructor(private productService: ProductService) {}
 
   @Get()
@@ -12,13 +22,30 @@ export class ProductController {
   }
 
   @Post()
-  createProducts(@Body() input_obj) {
+  createProducts(@Body() input_obj: CreateProductDto) {
     // [To do] Check if input_obj is in the correct format
-    return this.productService.createProduct(input_obj);
+    console.log('test!!!!!!!!!!');
+    console.log(input_obj);
+    return 'hi';
+    //return this.productService.createProduct(input_obj);
   }
 
+  @Put(':id')
+  async updateProduct(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateData: Product,
+  ): Promise<Product> {
+    return this.productService.updateProduct(id, updateData);
+  }
 
-  @Get('trending') 
+  @Delete(':id')
+  async deleteProduct(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() deleteData: Product,
+  ): Promise<void> {
+    return this.productService.deleteProduct(id, deleteData);
+  }
+  @Get('trending')
   getTrendingProducts() {
     return this.productService.getTrendingProducts();
   }
