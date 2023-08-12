@@ -12,7 +12,7 @@ export class Product {
   description: string;
 
   @Column()
-  imgSource: string;   // Should be array of string
+  imgSource: string[];
 
   @Column()
   price: number;

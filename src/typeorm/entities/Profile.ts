@@ -12,9 +12,20 @@ export class Profile {
   lastName: string;
 
   @Column()
-  age: number;
+  email: string;
 
   @Column()
-  dob: string;
+  phoneNumber: string;
 
+  @Column()
+  country: string;
+
+  @Column()
+  zipCode: string;
+
+  @Column()
+  address: string;
+
+  @Column()
+  additionalInfo: string;
 }
