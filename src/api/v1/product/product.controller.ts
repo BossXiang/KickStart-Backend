@@ -24,8 +24,7 @@ export class ProductController {
   @Post()
   createProducts(@Body() input_obj: CreateProductDto) {
     // [To do] Check if input_obj is in the correct format
-    console.log('test!!!!!!!!!!');
-    console.log(input_obj);
+    
     return 'hi';
     //return this.productService.createProduct(input_obj);
   }
