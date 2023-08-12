@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      - MYSQL_USERNAME='tom'
+      - MYSQL_PASSWORD='123456789'
+      - MYSQL_DATABASE='sql_test'
+    depends_on:
+          - db
+
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456789
+      - MYSQL_DATABASE=sql_test
+      - MYSQL_USER=tom
+      - MYSQL_PASSWORD=123456789
