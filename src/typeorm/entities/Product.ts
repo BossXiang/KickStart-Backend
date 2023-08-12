@@ -11,7 +11,7 @@ export class Product {
   @Column()
   description: string;
 
-  @Column()
+  @Column('simple-array')
   imgSource: string[];
 
   @Column()

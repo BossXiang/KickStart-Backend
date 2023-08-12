@@ -5,8 +5,8 @@ export class Order {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  product: object[];
+  @Column('json', { nullable: true })
+  productList: object[];  //product with purchase quantity
 
   @Column()
   state: string;
@@ -20,6 +20,6 @@ export class Order {
   @Column()
   transactionTime: Date;
 
-  @Column()
+  @Column('json', { nullable: true })
   deliveryInfo: object;
 }
