@@ -7,6 +7,7 @@ services:
     ports:
       - '6000:6000'
     environment:
-      - MYSQL_USERNAME='tom'
-      - MYSQL_PASSWORD='123456789'
-      - MYSQL_DATABASE='sql_test'
+      - MYSQL_USERNAME=$MYSQL_USERNAME
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - DB_HOST=host.docker.internal

@@ -24,9 +24,7 @@ export class ProductController {
   @Post()
   createProducts(@Body() input_obj: CreateProductDto) {
     // [To do] Check if input_obj is in the correct format
-    
-    return 'hi';
-    //return this.productService.createProduct(input_obj);
+    return this.productService.createProduct(input_obj);
   }
 
   @Put(':id')
@@ -40,9 +38,8 @@ export class ProductController {
   @Delete(':id')
   async deleteProduct(
     @Param('id', ParseIntPipe) id: number,
-    @Body() deleteData: Product,
   ): Promise<void> {
-    return this.productService.deleteProduct(id, deleteData);
+    return this.productService.deleteProduct(id);
   }
   @Get('trending')
   getTrendingProducts() {

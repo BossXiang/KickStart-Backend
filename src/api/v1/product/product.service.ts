@@ -35,7 +35,7 @@ export class ProductService {
     return product;
   }
 
-  async deleteProduct(id: number, deleteData: Product): Promise<void> {
+  async deleteProduct(id: number): Promise<void> {
     const product = await this.productRepository.findOne({
       where: {
         id,
