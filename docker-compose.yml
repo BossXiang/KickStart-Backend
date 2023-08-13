@@ -1,9 +1,8 @@
 version: '3'
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: kickstart_backend
+    container_name: kickstart_backend
     ports:
       - '6000:6000'
     environment:
