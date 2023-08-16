@@ -1,7 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn,OneToMany } from "typeorm";
-import { Item } from "./Item";
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Item } from './Item';
 
-@Entity({ name: 'products'})
+@Entity({ name: 'products' })
 export class Product {
   @PrimaryGeneratedColumn()
   id: number;
@@ -18,7 +18,6 @@ export class Product {
   @Column()
   price: number;
 
-  @OneToMany(()=>Item,(item)=>item.product)
-  item:Item;
-
+  // @OneToMany(() => Item, (item) => item.product)
+  // item: Item;
 }

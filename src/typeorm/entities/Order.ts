@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Item } from './Item';
 import { DeliveryInfo } from './DeliveryInfo';
@@ -31,9 +32,10 @@ export class Order {
   @Column()
   comment: string;
 
-  @OneToMany(() => Item, (item) => item.order)
-  items: Item[];
+  // @OneToMany(() => Item, (item) => item.order)
+  // item: Item[];
 
-  @OneToOne(() => DeliveryInfo, (deliveryInfo) => deliveryInfo.order)
+  @OneToOne(() => DeliveryInfo)
+  @JoinColumn()
   deliveryInfo: DeliveryInfo;
 }

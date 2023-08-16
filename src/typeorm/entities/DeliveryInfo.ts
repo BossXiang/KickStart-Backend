@@ -1,27 +1,33 @@
-import { Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  JoinColumn,
+  Column,
+} from 'typeorm';
 import { Order } from './Order';
 
-@Entity()
+@Entity({ name: 'deliveryInfo' })
 export class DeliveryInfo {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => Order, (order) => order.deliveryInfo)
-  @JoinColumn()
-  order: Order;
+  // @OneToOne(() => Order, {onDelete:'CASCADE'})
+  // @JoinColumn()
+  // order!: Order;
 
   @Column()
-  email:string;
+  email: string;
 
   @Column()
-  firstName:string;
+  firstName: string;
 
   @Column()
-  lastName:string;
+  lastName: string;
 
   @Column()
-  address:string;
+  address: string;
 
   @Column()
-  country:string;
+  country: string;
 }
