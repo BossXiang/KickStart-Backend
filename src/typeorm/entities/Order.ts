@@ -14,9 +14,6 @@ export class Order {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('json', { nullable: true })
-  productList: object[]; //product with purchase quantity
-
   @Column()
   state: string;
 
@@ -32,10 +29,10 @@ export class Order {
   @Column()
   comment: string;
 
-  // @OneToMany(() => Item, (item) => item.order)
-  // item: Item[];
+  @OneToMany(() => Item, item => item.order)
+  item: Item[];
 
-  @OneToOne(() => DeliveryInfo)
+  @OneToOne(() => DeliveryInfo, { cascade: true, onDelete: 'CASCADE' })
   @JoinColumn()
   deliveryInfo: DeliveryInfo;
 }

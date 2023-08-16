@@ -10,7 +10,9 @@ import { ProductModule } from './api/v1/product/product.module';
 import { OrderModule } from './api/v1/order/order.module';
 import { Product } from './typeorm/entities/Product';
 import { Order } from './typeorm/entities/Order';
+import { Item } from './typeorm/entities/Item';
 import * as dotenv from 'dotenv';
+import { DeliveryInfo } from './typeorm/entities/DeliveryInfo';
 
 dotenv.config();
 
@@ -22,7 +24,7 @@ dotenv.config();
     username: process.env.MYSQL_USERNAME,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
-    entities: [ User, Profile, Product, Order ],
+    entities: [ Product, DeliveryInfo, Order, Item ],  // User and Profile are removed temporarily
     synchronize: true,
   }), UsersModule, GeneralModule, ProductModule, OrderModule ],
   controllers: [AppController],

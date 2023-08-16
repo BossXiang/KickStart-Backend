@@ -18,6 +18,6 @@ export class Product {
   @Column()
   price: number;
 
-  // @OneToMany(() => Item, (item) => item.product)
-  // item: Item;
+  @OneToMany(() => Item, item => item.product)
+  item: Item[];
 }

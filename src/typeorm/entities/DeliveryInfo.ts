@@ -12,10 +12,6 @@ export class DeliveryInfo {
   @PrimaryGeneratedColumn()
   id: number;
 
-  // @OneToOne(() => Order, {onDelete:'CASCADE'})
-  // @JoinColumn()
-  // order!: Order;
-
   @Column()
   email: string;
 
