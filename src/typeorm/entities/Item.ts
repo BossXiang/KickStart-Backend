@@ -1,22 +1,21 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn,OneToOne, JoinColumn, } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Order } from './Order';
 import { Product } from './Product';
 
-@Entity()
+@Entity({ name: 'items' })
 export class Item {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Order, (order) => order.items)
-  order: Order;
+  // @ManyToOne(() => Order, (order) => order.item)
+  // order: Order;
 
-  @OneToOne(()=>Product,product=>product.item)
-  @JoinColumn()
-  product:Product;
-
-  @Column()
-  number:number;
+  // @ManyToOne(() => Product, (product) => product.item)
+  // product: Product;
 
   @Column()
-  comment:string;
+  number: number;
+
+  @Column()
+  comment: string;
 }
