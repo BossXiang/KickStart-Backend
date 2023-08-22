@@ -30,7 +30,7 @@ export class Order {
   comment: string;
 
   @OneToMany(() => Item, item => item.order)
-  item: Item[];
+  items: Item[];
 
   @OneToOne(() => DeliveryInfo, { cascade: true, onDelete: 'CASCADE' })
   @JoinColumn()
