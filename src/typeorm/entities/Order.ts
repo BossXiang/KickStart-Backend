@@ -29,11 +29,11 @@ export class Order {
   @Column()
   comment: string;
 
-  @OneToMany(() => Item, item => item.order)
+  @OneToMany(() => Item, item => item.order, { cascade: true, onDelete: 'CASCADE' })
   @JoinColumn()
   item: Item[];
 
   @OneToOne(() => DeliveryInfo, { cascade: true, onDelete: 'CASCADE' })
   @JoinColumn()
-  deliveryInfo: DeliveryInfo;
+  deliveryinfo: DeliveryInfo;
 }
