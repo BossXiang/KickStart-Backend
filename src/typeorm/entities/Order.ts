@@ -15,7 +15,7 @@ export class Order {
   id: number;
 
   @Column()
-  state: string;
+  status: string;
 
   @Column()
   payTime: Date;
@@ -29,8 +29,9 @@ export class Order {
   @Column()
   comment: string;
 
-  @OneToMany(() => Item, item => item.order)
-  items: Item[];
+  @OneToOne(() => Item, { cascade: true, onDelete: 'CASCADE' })
+  @JoinColumn()
+  item: Item;
 
   @OneToOne(() => DeliveryInfo, { cascade: true, onDelete: 'CASCADE' })
   @JoinColumn()

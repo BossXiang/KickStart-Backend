@@ -7,6 +7,6 @@ export class CreateOrderDto {
   deliveryTime: Date;
   transactionTime: Date;
   comment: string;
-  items: ItemDto[];
+  item: ItemDto[];
   deliveryInfo: DeliveryInfoDto;
 }
