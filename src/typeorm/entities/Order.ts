@@ -29,9 +29,9 @@ export class Order {
   @Column()
   comment: string;
 
-  @OneToOne(() => Item, { cascade: true, onDelete: 'CASCADE' })
+  @OneToMany(() => Item, item => item.order)
   @JoinColumn()
-  item: Item;
+  item: Item[];
 
   @OneToOne(() => DeliveryInfo, { cascade: true, onDelete: 'CASCADE' })
   @JoinColumn()
