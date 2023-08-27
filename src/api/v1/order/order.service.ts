@@ -41,7 +41,7 @@ export class OrderService {
       throw new NotFoundException('update order not found!');
     }
 
-    // Delete old items and delivery items
+    // Store ids of old items and delivery items
     var delDeliveryId = null, delItemId = null;
     if(updatedData.deliveryinfo) delDeliveryId = order.deliveryinfo.id;
     if(updatedData.item) delItemId = order.item.map(i => i.id);
@@ -49,6 +49,7 @@ export class OrderService {
     Object.assign(order, updatedData);
     await this.orderRepository.save(order);
 
+    // Delete Old items and old deliveryinfo
     if(updatedData.deliveryinfo) this.deliveryInfoRepository.delete(delDeliveryId);
     if(updatedData.item) this.itemRepository
       .createQueryBuilder()
