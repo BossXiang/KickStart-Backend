@@ -9,8 +9,16 @@ export class ProductService {
     @InjectRepository(Product) private productRepository: Repository<Product>,
   ) {}
 
-  getProduct() {
+  getProducts() {
     return this.productRepository.find();
+  }
+
+  getProduct(id) {
+    return this.productRepository.findOne({
+      where: {
+        id
+      }
+    });
   }
 
   createProduct(obj) {

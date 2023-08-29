@@ -18,8 +18,16 @@ export class ProductController {
 
   @Get()
   getProducts() {
-    return this.productService.getProduct();
+    return this.productService.getProducts();
   }
+
+  @Get(':id')
+  getProduct(
+    @Param('id', ParseIntPipe) id: number
+  ) {
+    return this.productService.getProduct(id);
+  }
+
 
   @Post()
   createProducts(@Body() input_obj: CreateProductDto) {
