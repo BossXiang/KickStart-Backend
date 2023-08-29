@@ -21,13 +21,17 @@ export class ProductController {
     return this.productService.getProducts();
   }
 
+  @Get('trending')
+  getTrendingProducts() {
+    return this.productService.getTrendingProducts();
+  }
+  
   @Get(':id')
   getProduct(
     @Param('id', ParseIntPipe) id: number
   ) {
     return this.productService.getProduct(id);
   }
-
 
   @Post()
   createProducts(@Body() input_obj: CreateProductDto) {
@@ -48,9 +52,5 @@ export class ProductController {
     @Param('id', ParseIntPipe) id: number,
   ): Promise<void> {
     return this.productService.deleteProduct(id);
-  }
-  @Get('trending')
-  getTrendingProducts() {
-    return this.productService.getTrendingProducts();
   }
 }

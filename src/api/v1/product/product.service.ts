@@ -26,7 +26,11 @@ export class ProductService {
   }
 
   getTrendingProducts() {
-    return 'test';
+    // Idea: calculate the popularity by the amount ordered and the amount of views
+    // Now, It's implemented to get up to 5 random products from the products database
+    return this.productRepository.find({
+      take: 5,
+    });
   }
 
   async updateProduct(id: number, updateData: Product): Promise<Product> {
