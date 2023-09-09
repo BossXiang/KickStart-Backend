@@ -13,6 +13,7 @@ import { Order } from './typeorm/entities/Order';
 import { Item } from './typeorm/entities/Item';
 import * as dotenv from 'dotenv';
 import { DeliveryInfo } from './typeorm/entities/DeliveryInfo';
+import { PaymentModule } from './api/v1/payment/payment.module';
 
 dotenv.config();
 
@@ -26,7 +27,7 @@ dotenv.config();
     database: process.env.MYSQL_DATABASE,
     entities: [ Product, DeliveryInfo, Order, Item ],  // User and Profile are removed temporarily
     synchronize: true,
-  }), UsersModule, GeneralModule, ProductModule, OrderModule ],
+  }), UsersModule, GeneralModule, ProductModule, OrderModule, PaymentModule ],
   controllers: [AppController],
   providers: [AppService],
 })
