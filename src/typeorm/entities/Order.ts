@@ -1,7 +1,7 @@
 import {
   Column,
   Entity,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
   OneToMany,
   OneToOne,
   JoinColumn,
@@ -11,8 +11,8 @@ import { DeliveryInfo } from './DeliveryInfo';
 
 @Entity({ name: 'orders' })
 export class Order {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryColumn('uuid')
+  id: string;
 
   @Column()
   status: string;

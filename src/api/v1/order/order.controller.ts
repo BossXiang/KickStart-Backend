@@ -17,7 +17,7 @@ export class OrderController {
   constructor(private orderService: OrderService) {}
 
   @Get(':id')
-  searchOrder(@Param('id', ParseIntPipe) id: number):Promise<Order>{
+  searchOrder(@Param('id', ParseIntPipe) id: string):Promise<Order>{
     return this.orderService.searchOrder(id);
   }
 
@@ -28,14 +28,14 @@ export class OrderController {
 
   @Put(':id')
   async updateOrder(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('id', ParseIntPipe) id: string,
     @Body() updateData: Order,
   ): Promise<Order> {
     return this.orderService.updateOrder(id, updateData);
   }
 
   @Delete(':id')
-  async deleteOrder(@Param('id', ParseIntPipe) id: number): Promise<void> {
+  async deleteOrder(@Param('id', ParseIntPipe) id: string): Promise<void> {
     return this.orderService.deleteOrder(id);
   }
 }

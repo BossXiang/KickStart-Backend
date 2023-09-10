@@ -4,6 +4,7 @@ import { Item } from 'src/typeorm/entities/Item';
 import { Order } from 'src/typeorm/entities/Order';
 import { DeliveryInfo } from 'src/typeorm/entities/DeliveryInfo';
 import { Repository } from 'typeorm';
+import { v4 as uuid4 } from 'uuid';
 
 @Injectable()
 export class OrderService {
@@ -14,10 +15,18 @@ export class OrderService {
   ) {}
 
   async createOrder(orderData: Order): Promise<Order> {
+    // uuid example: 65e91711-8cd4-44e2-90a8-704e59f05a78
+    const uid = uuid4(); 
+    orderData = { 
+      id: uid,  
+      status: "processing",
+      deliveryTime: new Date(),
+      ...orderData };
     const order = this.orderRepository.create(orderData);
     return this.orderRepository.save(order);
   }
-  async searchOrder(id: number): Promise<Order> {
+
+  async searchOrder(id: string): Promise<Order> {
     const order = await this.orderRepository.findOne({
       where:{
         id
@@ -30,7 +39,7 @@ export class OrderService {
     return order;
   }
 
-  async updateOrder(id: number, updatedData: Order): Promise<Order> {
+  async updateOrder(id: string, updatedData: Order): Promise<Order> {
     const order = await this.orderRepository.findOne({
       where: {
         id,
@@ -61,7 +70,7 @@ export class OrderService {
     return order;
   }
 
-  async deleteOrder(id: number): Promise<void> {
+  async deleteOrder(id: string): Promise<void> {
     const order = await this.orderRepository.findOne({
       where: {
         id,
