@@ -5,6 +5,7 @@ import { Order } from 'src/typeorm/entities/Order';
 import { DeliveryInfo } from 'src/typeorm/entities/DeliveryInfo';
 import { Repository } from 'typeorm';
 import { v4 as uuid4 } from 'uuid';
+import { EmailService } from '../email/email.service';
 
 @Injectable()
 export class OrderService {
@@ -12,18 +13,22 @@ export class OrderService {
     @InjectRepository(Item) private itemRepository: Repository<Item>, 
     @InjectRepository(Order) private orderRepository: Repository<Order>, 
     @InjectRepository(DeliveryInfo) private deliveryInfoRepository: Repository<DeliveryInfo>, 
+    private emailService: EmailService,
   ) {}
 
   async createOrder(orderData: Order): Promise<Order> {
     // uuid example: 65e91711-8cd4-44e2-90a8-704e59f05a78
     const uid = uuid4(); 
+    const email = orderData.deliveryinfo.email;
     orderData = { 
       id: uid,  
       status: "processing",
       deliveryTime: new Date(),
       ...orderData };
     const order = this.orderRepository.create(orderData);
-    return this.orderRepository.save(order);
+    const savedData = await this.orderRepository.save(order);
+    this.emailService.sendOrderConfirmationEmail(email, uid);
+    return savedData
   }
 
   async searchOrder(id: string): Promise<Order> {
