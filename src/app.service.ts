@@ -6,8 +6,8 @@ import { EmailService } from './api/v1/email/email.service';
 export class AppService {
   getHello(): string {
     // return uuid4();
-    // const emailService = new EmailService();
-    // emailService.testEmail();
+    const emailService = new EmailService();
+    emailService.testEmail();
     // emailService.sendOrderConfirmationEmail('bosszheng220@gmail.com', 'test');
 
     return 'Hello World!';
