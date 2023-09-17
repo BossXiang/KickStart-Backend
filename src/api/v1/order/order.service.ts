@@ -32,6 +32,7 @@ export class OrderService {
   }
 
   async searchOrder(id: string): Promise<Order> {
+    console.log(id);
     const order = await this.orderRepository.findOne({
       where:{
         id

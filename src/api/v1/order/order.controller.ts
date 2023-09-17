@@ -16,14 +16,8 @@ import { Order } from 'src/typeorm/entities/Order';
 export class OrderController {
   constructor(private orderService: OrderService) {}
 
-  // @Get(':id')
-  // searchOrder(@Param('id', ParseIntPipe) id: string):Promise<Order>{
-  //   return this.orderService.searchOrder(id);
-  // }
-
-  @Get()
-  searchOrder(@Body() body):Promise<Order>{
-    const id = body.id
+  @Get(':id')
+  searchOrder(@Param('id') id: string): Promise<Order> {
     return this.orderService.searchOrder(id);
   }
 
