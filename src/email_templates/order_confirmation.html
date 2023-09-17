@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Order Confirmation</title>
+</head>
+<body>
+    <p>Hello {{ deliveryinfo.firstName }} {{ deliveryinfo.lastName }},</p>
+    <p>Your order with ID <strong>{{ id }}</strong> has been confirmed. Here are the details:</p>
+    <a href="https://tailorbliss.com/searchOrder?id={{ id }}" style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: #fff; text-decoration: none;">View the order</a>
+    <p>Transaction time: {{ transactionTime }}</p>
+</body>
+</html>

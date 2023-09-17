@@ -27,7 +27,7 @@ export class OrderService {
       ...orderData };
     const order = this.orderRepository.create(orderData);
     const savedData = await this.orderRepository.save(order);
-    this.emailService.sendOrderConfirmationEmail(email, uid);
+    this.emailService.sendOrderConfirmationEmail(email, savedData);
     return savedData
   }
 
