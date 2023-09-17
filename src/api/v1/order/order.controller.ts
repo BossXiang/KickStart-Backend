@@ -7,6 +7,7 @@ import {
   Body,
   Param,
   ParseIntPipe,
+  Req,
 } from '@nestjs/common';
 import { OrderService } from './order.service';
 import { CreateOrderDto } from './dto/CreateOrder.dto';
@@ -21,9 +22,9 @@ export class OrderController {
   //   return this.orderService.searchOrder(id);
   // }
 
-  @Get()
-  searchOrder(@Body() body):Promise<Order>{
-    const id = body.id
+  @Get(':id')
+  searchOrder(@Param('id') id: string):Promise<Order>{
+    console.log(id)
     return this.orderService.searchOrder(id);
   }
 
