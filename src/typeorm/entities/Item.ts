@@ -19,5 +19,14 @@ export class Item {
   number: number;
 
   @Column()
+  content: string;
+
+  @Column()
+  prompt: string;
+  
+  @Column('simple-array')
+  images: string[];
+
+  @Column()
   comment: string;
 }

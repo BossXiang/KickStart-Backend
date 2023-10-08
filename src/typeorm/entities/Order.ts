@@ -17,14 +17,14 @@ export class Order {
   @Column()
   status: string;
 
-  @Column()
-  payTime: Date;
+  @Column({nullable: true})
+  transactionTime: Date;
 
-  @Column()
+  @Column({nullable: true})
   deliveryTime: Date;
 
-  @Column()
-  transactionTime: Date;
+  @Column({nullable: true})
+  receivenTime: Date;
 
   @Column()
   comment: string;

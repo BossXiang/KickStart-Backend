@@ -3,8 +3,6 @@ import { ItemDto } from './Item.dto';
 
 export class CreateOrderDto {
   status: string;
-  payTime: Date;
-  deliveryTime: Date;
   transactionTime: Date;
   comment: string;
   item: ItemDto[];

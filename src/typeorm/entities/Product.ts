@@ -1,7 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Item } from './Item';
 
-@Entity({ name: 'products' })
+@Entity({ name: 'product' })
 export class Product {
   @PrimaryGeneratedColumn()
   id: number;
@@ -12,9 +11,12 @@ export class Product {
   @Column()
   description: string;
 
-  @Column('simple-array')
-  imgSource: string[];
-
   @Column()
+  spec: string;
+
+  @Column('simple-array')
+  images: string[];
+
+  @Column({ type: 'float' })
   price: number;
 }

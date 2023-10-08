@@ -29,14 +29,14 @@ export class OrderController {
 
   @Put(':id')
   async updateOrder(
-    @Param('id', ParseIntPipe) id: string,
+    @Param('id') id: string,
     @Body() updateData: Order,
   ): Promise<Order> {
     return this.orderService.updateOrder(id, updateData);
   }
 
   @Delete(':id')
-  async deleteOrder(@Param('id', ParseIntPipe) id: string): Promise<void> {
+  async deleteOrder(@Param('id') id: string): Promise<void> {
     return this.orderService.deleteOrder(id);
   }
 }

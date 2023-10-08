@@ -23,7 +23,8 @@ export class OrderService {
     orderData = { 
       id: uid,  
       status: "processing",
-      deliveryTime: new Date(),
+      deliveryTime: null,
+      receivenTime: null,
       ...orderData };
     const order = this.orderRepository.create(orderData);
     const savedData = await this.orderRepository.save(order);
