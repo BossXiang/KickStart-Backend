@@ -22,8 +22,9 @@ export class ProductController {
   }
 
   @Get('trending')
-  getTrendingProducts() {
-    return this.productService.getTrendingProducts();
+  getTrendingProducts(@Body() body) {
+    const limit = body.limit || 4;
+    return this.productService.getTrendingProducts(limit);
   }
   
   @Get(':id')
